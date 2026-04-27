@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Brusca.Tests
+        uses: actions/checkout@v4
+        with:
+          path: Brusca.Tests
+
+      - name: Checkout Brusca.Api (sibling required by WebApplicationFactory<Program>)
+        uses: actions/checkout@v4
+        with:
+          repository: Out-Of-Box-Thinking/Brusca.Api
+          path: Brusca.Api
+          ref: main
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 9.0.x
+
+      - name: Restore
+        working-directory: Brusca.Tests
+        run: dotnet restore
+
+      - name: Build
+        working-directory: Brusca.Tests
+        run: dotnet build --configuration Release --no-restore
+
+      - name: Test
+        working-directory: Brusca.Tests
+        run: dotnet test --configuration Release --no-build --logger "trx;LogFileName=test-results.trx"
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: Brusca.Tests/**/test-results.trx
