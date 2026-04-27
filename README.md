@@ -82,6 +82,20 @@ dotnet test --filter "FullyQualifiedName~Infrastructure"
 
 ---
 
+## Continuous integration
+
+[`.github/workflows/ci.yml`](.github/workflows/ci.yml) runs on push or PR to `main`. Because `WebApplicationFactory<Program>` requires the compiled `Brusca.Api` entry-point assembly, the workflow checks out **both repos** as siblings before building:
+
+```
+workspace/
+  Brusca.Tests/    ← this repo
+  Brusca.Api/      ← checked out from Out-Of-Box-Thinking/Brusca.Api @ main
+```
+
+It then runs `dotnet restore` → `dotnet build` → `dotnet test` and uploads the TRX results as an artifact.
+
+---
+
 ## Related repositories
 
 | Repo | Role |
