@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <IsPackable>false</IsPackable>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Core and Infrastructure consumed as NuGet packages from the shared local feed -->
+    <PackageReference Include="Brusca.Core" Version="1.0.*" />
+    <PackageReference Include="Brusca.Infrastructure" Version="1.0.*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!--
+      Brusca.Api is referenced as a ProjectReference because Microsoft.AspNetCore.Mvc.Testing /
+      WebApplicationFactory<Program> requires the compiled entry-point assembly at test time.
+      Both repos must be checked out as siblings under the same parent directory.
+        Brusca.Api/   (this repo)
+        Brusca.Tests/ (this repo)
+    -->
+    <ProjectReference Include="..\..\Brusca.Api\Brusca.Api\Brusca.Api.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="xunit" Version="2.*" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.*" />
+    <PackageReference Include="Moq" Version="4.*" />
+    <PackageReference Include="FluentAssertions" Version="6.*" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="9.0.*" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.*" />
+    <PackageReference Include="Bogus" Version="35.*" />
+  </ItemGroup>
+
+</Project>
