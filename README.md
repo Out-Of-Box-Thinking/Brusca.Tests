@@ -86,6 +86,7 @@ dotnet test --filter "FullyQualifiedName~Infrastructure"
 
 | Repo | Role |
 |------|------|
-| [Brusca.Core](../Brusca.Core) | Domain kernel — interfaces and models (NuGet) |
-| [Brusca.Infrastructure](../Brusca.Infrastructure) | Infrastructure implementations (NuGet) |
-| [Brusca.Api](../Brusca.Api) | ASP.NET Core 9 host (ProjectReference for Mvc.Testing) |
+| [Brusca.Core](https://github.com/Out-Of-Box-Thinking/Brusca.Core) | Domain kernel — interfaces and models (NuGet) |
+| [Brusca.Infrastructure](https://github.com/Out-Of-Box-Thinking/Brusca.Infrastructure) | Infrastructure implementations (NuGet) |
+| [Brusca.Api](https://github.com/Out-Of-Box-Thinking/Brusca.Api) | ASP.NET Core 9 host (ProjectReference for Mvc.Testing) |
+| [Brusca.Web](https://github.com/Out-Of-Box-Thinking/Brusca.Web) | Astro 5 front-end |
