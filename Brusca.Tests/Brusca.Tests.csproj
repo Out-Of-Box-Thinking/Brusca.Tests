@@ -10,8 +10,8 @@
 
   <ItemGroup>
     <!-- Core and Infrastructure consumed as NuGet packages from the shared local feed -->
-    <PackageReference Include="Brusca.Core" Version="1.0.*" />
-    <PackageReference Include="Brusca.Infrastructure" Version="1.0.*" />
+    <PackageReference Include="Brusca.Core" Version="1.0.999-pii" />
+    <PackageReference Include="Brusca.Infrastructure" Version="1.0.999-pii" />
   </ItemGroup>
 
   <ItemGroup>
